@@ -92,7 +92,6 @@ class Env(object):
                         if abs(cur_time - self.key_time) < 0.1:
                             continue
                         self.key_time = cur_time
-
                         self.gm.handle_move(
                             {
                                 pygame.K_UP: 'UP',
