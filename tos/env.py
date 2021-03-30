@@ -1,5 +1,5 @@
 import pickle
-
+import time
 
 class Env(object):
     def __init__(self):
@@ -88,6 +88,10 @@ class Env(object):
                             pygame.K_s: self.save,
                         }[event.key]()
                     elif event.key in [pygame.K_UP, pygame.K_DOWN, pygame.K_LEFT, pygame.K_RIGHT]:
+                        cur_time = time.time()
+                        if abs(cur_time - self.key_time) < 0.1:
+                            continue
+                        self.key_time = cur_time
                         self.gm.handle_move(
                             {
                                 pygame.K_UP: 'UP',
